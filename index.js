@@ -2,6 +2,7 @@ import { ApolloServer, gql } from 'apollo-server'
 
 const persons = [
   {
+    age: 18,
     name: 'Joaco',
     phone: '123456789',
     street: 'Calle Falsa 123',
@@ -9,13 +10,14 @@ const persons = [
     id: '550e8400-e29b-41d4-a716-346655440000',
   },
   {
+    age: 15,
     name: 'Juan',
-    phone: '987654321',
     street: 'Calle Falsa 321',
     city: 'Springfield',
     id: '550e8400-e29b-41d4-a716-246655440000',
   },
   {
+    age: 20,
     name: 'Pedro',
     phone: '456789123',
     street: 'Calle Falsa 213',
@@ -25,11 +27,16 @@ const persons = [
 ]
 
 const typeDefs = gql`
-  type Person {
-    name: String!
-    phone: String
+  type Address {
     street: String!
     city: String!
+  }
+  type Person {
+    age: Int!
+    canDrink: Boolean!
+    name: String!
+    phone: String
+    address: Address!
     id: ID!
   }
   type Query {
@@ -45,6 +52,18 @@ const resolvers = {
     allPersons: () => persons,
     findPerson: (root, args) => persons.find((p) => p.name === args.name),
   },
+  Person: {
+    canDrink: (root) => root.age >= 18,
+    address: (root) => {
+      return {
+        street: root.street,
+        city: root.city,
+      }
+    },
+  },
+  // Address: {
+  //   address: (root) => `${root.street}, ${root.city}`,
+  // },
 }
 
 const server = new ApolloServer({
