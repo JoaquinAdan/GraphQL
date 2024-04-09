@@ -1,0 +1,27 @@
+{
+  "persons": [
+    {
+      "age": 18,
+      "name": "Gerardo",
+      "phone": "123456789",
+      "street": "Calle Falsa 123",
+      "city": "Springfield",
+      "id": "550e8400-e29b-41d4-a716-346655440000"
+    },
+    {
+      "age": 15,
+      "name": "Ricardo",
+      "street": "Calle Falsa 321",
+      "city": "Springfield",
+      "id": "550e8400-e29b-41d4-a716-246655440000"
+    },
+    {
+      "age": 20,
+      "name": "Manuel",
+      "phone": "456789123",
+      "street": "Calle Falsa 213",
+      "city": "Ibiza",
+      "id": "550e8400-e29b-41d4-a716-146655440000"
+    }
+  ]
+}
